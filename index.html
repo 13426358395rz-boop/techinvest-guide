@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年6月科技牛市投资配置 v17</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f1117;--card:#1a1d2e;--bdr:#2a2e45;--t1:#e8eaed;--t2:#9ca3af;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--purple:#8b5cf6;--g1:linear-gradient(135deg,#667eea,#764ba2)}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+.header{text-align:center;padding:32px 16px 20px;border-bottom:1px solid var(--bdr)}
+.header h1{font-size:26px;font-weight:700;background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.header p{color:var(--t2);font-size:13px}
+.nav{display:flex;justify-content:center;gap:8px;padding:14px 0;border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;background:var(--bg)}
+.nav button{padding:8px 20px;border-radius:20px;border:1px solid var(--bdr);background:0;color:var(--t2);cursor:pointer;font-size:14px;transition:.3s}
+.nav button:hover{background:var(--card);color:var(--t1)}
+.nav button.on{background:var(--g1);color:#fff;border-color:transparent}
+.wrap{max-width:1000px;margin:0 auto;padding:20px 16px}
+.sec{display:none}.sec.on{display:block}
+.stitle{font-size:20px;font-weight:600;margin:24px 0 16px}
+.ssub{color:var(--t2);font-size:13px;margin-bottom:16px}
+.footer{text-align:center;padding:28px 16px;color:var(--t2);font-size:12px;border-top:1px solid var(--bdr);margin-top:32px}
+
+/* calendar - 5 columns Mon-Fri */
+.cal-wrap{margin-bottom:24px}
+.cal-month{font-size:18px;font-weight:700;text-align:center;margin-bottom:12px}
+.cal-grid{border:1px solid var(--bdr);border-radius:14px;overflow:hidden;background:var(--card)}
+.cal-row{display:grid;grid-template-columns:repeat(5,1fr)}
+.cal-hdr{padding:10px 6px;text-align:center;font-weight:600;font-size:12px;background:#222640;color:var(--t2)}
+.cal-cell{min-height:90px;padding:8px 6px;border-right:1px solid var(--bdr);border-bottom:1px solid var(--bdr);font-size:11px;position:relative}
+.cal-cell:nth-child(5n){border-right:none}
+.cal-row:last-child .cal-cell{border-bottom:none}
+.cal-cell.cal-out{opacity:.25}
+.cal-cell.today{background:rgba(59,130,246,.1);box-shadow:inset 0 0 0 2px var(--blue);border-radius:4px}
+.cal-num{font-weight:700;font-size:14px;margin-bottom:4px}
+.cal-out .cal-num{color:var(--t2)}
+.cal-dot{padding:2px 5px;border-radius:4px;margin-bottom:2px;font-size:10px;font-weight:600;cursor:default;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.4}
+.cal-legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;justify-content:center}
+.cal-tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600}
+
+/* news */
+.news-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.news-item{padding:12px 16px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;border-left:3px solid var(--blue)}
+.news-title{font-weight:600;font-size:14px;margin-bottom:4px}
+.news-body{font-size:13px;color:var(--t2);line-height:1.5}
+.news-date{font-size:11px;color:var(--t2);margin-top:4px;opacity:.7}
+
+/* scarcity tables */
+.tbl-section{margin-bottom:32px}
+.tbl-header{font-size:18px;font-weight:700;margin-bottom:14px;padding:12px 18px;border-radius:12px}
+.tbl-header.red{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2)}
+.tbl-header.orange{background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.2)}
+.tbl-header.blue{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2)}
+.tbl-header.green{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#222640;padding:10px 14px;text-align:left;font-weight:600;border-bottom:2px solid var(--bdr);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--bdr);vertical-align:top}
+tr:hover{background:var(--card)}
+.tbl-name{font-weight:700;white-space:nowrap}
+.tbl-code{font-size:11px;color:var(--t2)}
+.tbl-sector{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;background:rgba(139,92,246,.15);color:#a78bfa}
+.tbl-global td:first-child{border-left:3px solid var(--red)}
+.tbl-t1 td:first-child{border-left:3px solid var(--red)}
+.tbl-t2 td:first-child{border-left:3px solid #f59e0b}
+.tbl-t3 td:first-child{border-left:3px solid var(--green)}
+.tier-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;margin-left:6px;vertical-align:middle}
+.tier-badge.t1{background:rgba(239,68,68,.15);color:var(--red)}
+.tier-badge.t2{background:rgba(245,158,11,.15);color:#f59e0b}
+.tier-badge.t3{background:rgba(16,185,129,.15);color:var(--green)}
+.stat-bar{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.stat-item{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:12px 16px;text-align:center;min-width:90px}
+.stat-num{font-size:22px;font-weight:800}
+.stat-label{font-size:11px;color:var(--t2);margin-top:2px}
+
+@media(max-width:600px){.header h1{font-size:20px}.nav button{padding:6px 14px;font-size:13px}.cal-cell{min-height:70px}.cal-dot{font-size:9px}}
+.tag-ai{background:#60a5fa22;color:#60a5fa;border:1px solid #60a5fa33}
+.tag-robo{background:#f472b622;color:#f472b6;border:1px solid #f472b633}
+.tag-macro{background:#fbbf2422;color:#fbbf24;border:1px solid #fbbf2433}
+.tag-ipo{background:#34d39922;color:#34d399;border:1px solid #34d39933}
+.tag-hw{background:#a78bfa22;color:#a78bfa;border:1px solid #a78bfa33}
+.tag-policy{background:#fb923c22;color:#fb923c;border:1px solid #fb923c33}
+.tag-sport{background:#22d3ee22;color:#22d3ee;border:1px solid #22d3ee33}
+</style></head><body>
+<div class="header"><h1>🚀 2026年6月科技牛市投资配置 v17</h1><p>AI算力 × 半导体国产替代 ｜ 数据更新至2026年6月3日</p></div>
+<div class="nav"><button class="on" onclick="sw(0)">📅 6月策略</button><button onclick="sw(1)">💎 核心底仓·稀缺性分类</button></div>
+<div class="wrap">
+<div class="sec on" id="s0">
+<div class="stitle">📅 6月关键事件日历（交易日历）</div>
+<div class="cal-wrap"><div class="cal-month">2026年6月</div>
+<div class="cal-legend"><span class="cal-tag tag-ai">AI/芯片</span><span class="cal-tag tag-robo">机器人</span><span class="cal-tag tag-macro">宏观</span><span class="cal-tag tag-ipo">IPO</span><span class="cal-tag tag-hw">硬件/科技</span><span class="cal-tag tag-policy">政策/行业</span><span class="cal-tag tag-sport">其他</span></div>
+<div class="cal-grid"><div class="cal-row"><div class="cal-hdr">一</div><div class="cal-hdr">二</div><div class="cal-hdr">三</div><div class="cal-hdr">四</div><div class="cal-hdr">五</div></div>
+<div class="cal-row"><div class="cal-cell"><div class="cal-num">1</div><div class="cal-dot tag-ai" title="Computex台北: Nvidia RTX Spark发布，AI PC时代开启">Comp…</div><div class="cal-dot tag-ai" title="GTC台北: 黄仁勋主题演讲">GTC台北</div></div><div class="cal-cell"><div class="cal-num">2</div><div class="cal-dot tag-ai" title="Computex台北: Nvidia RTX Spark发布，AI PC时代开启">Comp…</div><div class="cal-dot tag-ai" title="GTC台北: 黄仁勋主题演讲">GTC台北</div><div class="cal-dot tag-hw" title="微软Build: AI Agent+Windows整合">微软Bu…</div><div class="cal-dot tag-macro" title="JOLTs职位空缺: 761.8万远超预期，但离职率6年新低">JOLT…</div></div><div class="cal-cell today"><div class="cal-num">3</div><div class="cal-dot tag-ai" title="Computex台北: Nvidia RTX Spark发布，AI PC时代开启">Comp…</div><div class="cal-dot tag-ai" title="GTC台北: 黄仁勋主题演讲">GTC台北</div><div class="cal-dot tag-policy" title="SEMICON上海: 半导体设备/材料国产化">SEMI…</div><div class="cal-dot tag-macro" title="ADP就业数据: 前瞻非农">ADP就…</div><div class="cal-dot tag-ai" title="Broadcom财报: 盘后Q2，AI芯片风向标">Broa…</div><div class="cal-dot tag-hw" title="创业板破4200: 历史新高，CPO三巨头成交超千亿">创业板破…</div></div><div class="cal-cell"><div class="cal-num">4</div><div class="cal-dot tag-ai" title="Computex台北: Nvidia RTX Spark发布，AI PC时代开启">Comp…</div><div class="cal-dot tag-ai" title="GTC台北: 黄仁勋主题演讲">GTC台北</div><div class="cal-dot tag-ipo" title="SpaceX路演: 史上最大科技IPO预热">Spac…</div></div><div class="cal-cell"><div class="cal-num">5</div><div class="cal-dot tag-ai" title="Computex台北: Nvidia RTX Spark发布，AI PC时代开启">Comp…</div><div class="cal-dot tag-ai" title="GTC台北: 黄仁勋主题演讲">GTC台北</div><div class="cal-dot tag-macro" title="美非农数据: 沃什上任后首份非农">美非农数据</div><div class="cal-dot tag-hw" title="华为云大会: 昇腾AI云服务">华为云大会</div></div></div>
+<div class="cal-row"><div class="cal-cell"><div class="cal-num">8</div><div class="cal-dot tag-hw" title="苹果WWDC: iOS 20 + AI Siri重大升级">苹果WW…</div></div><div class="cal-cell"><div class="cal-num">9</div><div class="cal-dot tag-hw" title="苹果WWDC: iOS 20 + AI Siri重大升级">苹果WW…</div><div class="cal-dot tag-macro" title="FOMC开始: 沃什首秀，加息/降息定调">FOMC…</div></div><div class="cal-cell"><div class="cal-num">10</div><div class="cal-dot tag-macro" title="中美CPI: 通胀数据影响加息预期">中美CPI</div></div><div class="cal-cell"><div class="cal-num">11</div><div class="cal-dot tag-sport" title="世界杯开幕: 全球消费电子旺季">世界杯开幕</div><div class="cal-dot tag-ipo" title="SpaceX定价: IPO定价日">Spac…</div></div><div class="cal-cell"><div class="cal-num">12</div><div class="cal-dot tag-ipo" title="SpaceX上市: 历史性IPO">Spac…</div><div class="cal-dot tag-hw" title="华为HDC: 鸿蒙生态+AI战略">华为HDC</div></div></div>
+<div class="cal-row"><div class="cal-cell"><div class="cal-num">15</div></div><div class="cal-cell"><div class="cal-num">16</div><div class="cal-dot tag-macro" title="中国经济数据: 工业增加值+社零">中国经济…</div></div><div class="cal-cell"><div class="cal-num">17</div></div><div class="cal-cell"><div class="cal-num">18</div><div class="cal-dot tag-macro" title="FOMC决议: 利率决策公布，全年最重要">FOMC…</div></div><div class="cal-cell"><div class="cal-num">19</div><div class="cal-dot tag-sport" title="端午节休市: A股休市一天">端午节休市</div></div></div>
+<div class="cal-row"><div class="cal-cell"><div class="cal-num">22</div><div class="cal-dot tag-policy" title="季度末: 机构调仓窗口">季度末</div></div><div class="cal-cell"><div class="cal-num">23</div><div class="cal-dot tag-policy" title="季度末: 机构调仓窗口">季度末</div></div><div class="cal-cell"><div class="cal-num">24</div><div class="cal-dot tag-policy" title="季度末: 机构调仓窗口">季度末</div></div><div class="cal-cell"><div class="cal-num">25</div><div class="cal-dot tag-policy" title="季度末: 机构调仓窗口">季度末</div></div><div class="cal-cell"><div class="cal-num">26</div><div class="cal-dot tag-policy" title="季度末: 机构调仓窗口">季度末</div></div></div>
+<div class="cal-row"><div class="cal-cell"><div class="cal-num">29</div></div><div class="cal-cell"><div class="cal-num">30</div></div><div class="cal-cell cal-out"><div class="cal-num">1</div></div><div class="cal-cell cal-out"><div class="cal-num">2</div></div><div class="cal-cell cal-out"><div class="cal-num">3</div></div></div>
+</div></div>
+<div class="stitle">📡 行业动态</div><div class="news-list">
+<div class="news-item"><div class="news-title">英伟达CPO硅光全面量产</div><div class="news-body">Spectrum-X以太网硅光技术量产，能效提升5倍，直接利好光通信产业链</div><div class="news-date">📌 2026-06-03</div></div>
+<div class="news-item"><div class="news-title">创业板指首破4200点</div><div class="news-body">光通信爆发：源杰+16%、天孚+9%、中际+7%、新易盛+5%，三巨头成交超千亿</div><div class="news-date">📌 2026-06-03</div></div>
+<div class="news-item"><div class="news-title">Marvell暴涨33%</div><div class="news-body">黄仁勋Computex点名Marvell为'下一个万亿芯片公司'，英伟达已投资20亿美元</div><div class="news-date">📌 2026-06-03</div></div>
+<div class="news-item"><div class="news-title">费城半导体+5.87%创新高</div><div class="news-body">标普500首破7600；上海资管新政落地：2030年目标55万亿+500亿科创引导基金</div><div class="news-date">📌 2026-06-03</div></div>
+<div class="news-item"><div class="news-title">英伟达RTX Spark发布</div><div class="news-body">联合微软推出PC端AI超级芯片，重塑PC芯片格局，英特尔/高通承压</div><div class="news-date">📌 2026-06-02</div></div>
+<div class="news-item"><div class="news-title">HPE财报炸裂+28%</div><div class="news-body">AI服务器需求爆发，企业级AI基建全面加速</div><div class="news-date">📌 2026-06-02</div></div>
+<div class="news-item"><div class="news-title">美光突破$1000</div><div class="news-body">存储芯片需求持续旺盛，SK海力士称HBM产能瓶颈或持续到2030年</div><div class="news-date">📌 2026-06-02</div></div>
+<div class="news-item"><div class="news-title">宇树科技IPO上会</div><div class="news-body">人形机器人第一股，6/1科创板过会</div><div class="news-date">📌 2026-06-01</div></div>
+</div></div>
+<div class="sec" id="s1">
+<div class="stat-bar">
+<div class="stat-item"><div class="stat-num" style="color:var(--red)">4</div><div class="stat-label">🌍 全球绝对稀缺</div></div>
+<div class="stat-item"><div class="stat-num" style="color:var(--red)">7</div><div class="stat-label">🔴 一级·卡脖子唯一</div></div>
+<div class="stat-item"><div class="stat-num" style="color:#f59e0b">6</div><div class="stat-label">🟡 二级·国内领先</div></div>
+<div class="stat-item"><div class="stat-num" style="color:var(--green)">5</div><div class="stat-label">🟢 三级·规模替代</div></div>
+<div class="stat-item"><div class="stat-num" style="color:var(--blue)">22</div><div class="stat-label">📊 核心底仓合计</div></div>
+</div>
+<div class="tbl-section">
+<div class="tbl-header red">🌍 全球绝对稀缺 <span style="font-weight:400;font-size:13px;color:var(--t2);margin-left:8px">4只 · 全球寡头/唯一性，无替代方案</span></div>
+<div class="tbl-wrap"><table class="tbl-global">
+<tr><th>标的</th><th>代码</th><th>赛道</th><th>稀缺性</th><th>关键数据</th></tr>
+<tr><td><span class="tbl-name">ASMPT</span></td><td><span class="tbl-code">00522.HK</span></td><td><span class="tbl-sector">半导体设备</span></td><td>TCB热压键合全球龙头，唯一同时服务三星/SK海力士/美光三大HBM厂商<br><span style="font-size:12px;color:var(--t2)">500+台TCB量产，FIREBIRD支持16层HBM堆叠，book-to-bill 1.43</span></td><td style="color:#60a5fa;font-size:12px">+1.08% | 正常(0.9x)</td></tr>
+<tr><td><span class="tbl-name">澜起科技</span></td><td><span class="tbl-code">688008</span></td><td><span class="tbl-sector">芯片设计</span></td><td>JEDEC唯一中国成员，DDR5内存接口芯片标准制定者<br><span style="font-size:12px;color:var(--t2)">全球内存互连芯片份额36.8%第一，前三名合计93.4%垄断</span></td><td style="color:#60a5fa;font-size:12px">+7.13% | 换手7.97% | 正常(1.3x)</td></tr>
+<tr><td><span class="tbl-name">视涯科技</span></td><td><span class="tbl-code">688781</span></td><td><span class="tbl-sector">硅基OLED</span></td><td>硅基OLED全球唯二百万级出货，2026Q1国内市占51%超越索尼49%<br><span style="font-size:12px;color:var(--t2)">苹果Vision Pro供应链核心，Meta/字节VR订单放量</span></td><td style="color:#60a5fa;font-size:12px">+0.75% | 换手10.00%</td></tr>
+<tr><td><span class="tbl-name">天孚通信</span></td><td><span class="tbl-code">300394</span></td><td><span class="tbl-sector">光通信</span></td><td>1.6T光引擎全球唯一量产，FAU全球份额50%+<br><span style="font-size:12px;color:var(--t2)">英伟达1.6T需求锁定90-95%产能，CPO光引擎单台$3万</span></td><td style="color:#60a5fa;font-size:12px">+8.84% | 换手7.71% | 正常(1.2x)</td></tr>
+</table></div></div>
+<div class="tbl-section">
+<div class="tbl-header orange">🔴 一级稀缺 · 卡脖子环节唯一国产方案 <span class="tier-badge t1">T1</span><span style="font-weight:400;font-size:13px;color:var(--t2);margin-left:8px">7只 · 该环节无第二家国产替代，制裁下不可替代</span></div>
+<div class="tbl-wrap"><table class="tbl-t1">
+<tr><th>标的</th><th>代码</th><th>赛道</th><th>稀缺性</th><th>关键数据</th></tr>
+<tr><td><span class="tbl-name">海光信息</span></td><td><span class="tbl-code">688041</span></td><td><span class="tbl-sector">CPU</span></td><td>国内唯一x86架构授权，信创强制采购，无替代方案</td><td style="color:#60a5fa;font-size:12px">+0.86% | 换手1.61%</td></tr>
+<tr><td><span class="tbl-name">寒武纪</span></td><td><span class="tbl-code">688256</span></td><td><span class="tbl-sector">AI芯片</span></td><td>A股唯一纯AI芯片标的，国产大模型训练唯一国产GPU选项，Q1首度盈利10.13亿</td><td style="color:#60a5fa;font-size:12px">+6.01% | 换手2.64%</td></tr>
+<tr><td><span class="tbl-name">中微公司</span></td><td><span class="tbl-code">688012</span></td><td><span class="tbl-sector">半导体设备</span></td><td>5nm CCP刻蚀机进台积电，国产化率<20%，在手订单300亿+</td><td style="color:#60a5fa;font-size:12px">+1.10% | 换手3.55% | 正常(1.2x)</td></tr>
+<tr><td><span class="tbl-name">拓荆科技</span></td><td><span class="tbl-code">688072</span></td><td><span class="tbl-sector">半导体设备</span></td><td>国内PECVD/ALD唯一量产，在手订单180亿排到2027Q3</td><td style="color:#60a5fa;font-size:12px">+3.27% | 换手4.22% | 正常(1.1x)</td></tr>
+<tr><td><span class="tbl-name">源杰科技</span></td><td><span class="tbl-code">688498</span></td><td><span class="tbl-sector">光芯片</span></td><td>国内唯一量产2.5G/10G EML激光器芯片，磷化铟衬底全球缺口70%</td><td style="color:#60a5fa;font-size:12px">+16.41% | 换手6.26% | 正常(1.2x)</td></tr>
+<tr><td><span class="tbl-name">北方华创</span></td><td><span class="tbl-code">002371</span></td><td><span class="tbl-sector">半导体设备</span></td><td>国内唯一覆盖前道90%+工艺平台，在手订单650亿</td><td style="color:#60a5fa;font-size:12px">+2.00% | 换手1.99% | 正常(1.1x)</td></tr>
+<tr><td><span class="tbl-name">长电科技</span></td><td><span class="tbl-code">600584</span></td><td><span class="tbl-sector">封测</span></td><td>国内唯一HBM3E量产，8层堆叠良率98.5%超三星96%</td><td style="color:#60a5fa;font-size:12px">+6.34% | 换手18.18% | 正常(1.1x)</td></tr>
+</table></div></div>
+<div class="tbl-section">
+<div class="tbl-header blue">🟡 二级稀缺 · 国内第一，具备国际竞争力 <span class="tier-badge t2">T2</span><span style="font-weight:400;font-size:13px;color:var(--t2);margin-left:8px">6只 · 国内份额领先，技术接近或追平国际龙头</span></div>
+<div class="tbl-wrap"><table class="tbl-t2">
+<tr><th>标的</th><th>代码</th><th>赛道</th><th>稀缺性</th><th>关键数据</th></tr>
+<tr><td><span class="tbl-name">中际旭创</span></td><td><span class="tbl-code">300308</span></td><td><span class="tbl-sector">光模块</span></td><td>全球光模块出货量第一，800G份额35%+，英伟达/谷歌/微软核心供应商</td><td style="color:#60a5fa;font-size:12px">+6.98% | 换手3.11% | 正常(1.2x)</td></tr>
+<tr><td><span class="tbl-name">新易盛</span></td><td><span class="tbl-code">300502</span></td><td><span class="tbl-sector">光模块</span></td><td>800G LPO线性驱动唯一批量交付，低功耗方案领先</td><td style="color:#60a5fa;font-size:12px">+4.72% | 换手4.81% | 正常(1.3x)</td></tr>
+<tr><td><span class="tbl-name">深南电路</span></td><td><span class="tbl-code">002916</span></td><td><span class="tbl-sector">PCB/IC载板</span></td><td>IC载板国内第一，ABF载板突破，FC-BGA打破日本垄断</td><td style="color:#60a5fa;font-size:12px">-4.21% | 换手3.18% | 正常(1.3x)</td></tr>
+<tr><td><span class="tbl-name">沪电股份</span></td><td><span class="tbl-code">002463</span></td><td><span class="tbl-sector">PCB</span></td><td>高多层PCB国内第一，64层+量产，英伟达DGX/HGX主力供应商</td><td style="color:#60a5fa;font-size:12px">-0.92% | 换手5.47% | 正常(1.1x)</td></tr>
+<tr><td><span class="tbl-name">绿的谐波</span></td><td><span class="tbl-code">688017</span></td><td><span class="tbl-sector">机器人</span></td><td>谐波减速器国产第一(35%市占)/全球第二(7-15%)，技术追平哈默纳科</td><td style="color:#60a5fa;font-size:12px">+2.90% | 换手7.54% | 正常(1.0x)</td></tr>
+<tr><td><span class="tbl-name">宁德时代</span></td><td><span class="tbl-code">300750</span></td><td><span class="tbl-sector">动力电池</span></td><td>动力电池全球第一市占37%，规模壁垒稳固，防御配置</td><td style="color:#60a5fa;font-size:12px">-1.72% | 换手0.91% | 正常(0.9x)</td></tr>
+</table></div></div>
+<div class="tbl-section">
+<div class="tbl-header green">🟢 三级稀缺 · 规模化替代，份额持续提升 <span class="tier-badge t3">T3</span><span style="font-weight:400;font-size:13px;color:var(--t2);margin-left:8px">5只 · 量产规模壁垒，国产替代加速推进中</span></div>
+<div class="tbl-wrap"><table class="tbl-t3">
+<tr><th>标的</th><th>代码</th><th>赛道</th><th>稀缺性</th><th>关键数据</th></tr>
+<tr><td><span class="tbl-name">兆易创新</span></td><td><span class="tbl-code">603986</span></td><td><span class="tbl-sector">存储+MCU</span></td><td>NOR Flash国内第一，MCU国产替代龙头，GD32出货超15亿颗</td><td style="color:#60a5fa;font-size:12px">+3.70% | 换手8.71% | 正常(1.0x)</td></tr>
+<tr><td><span class="tbl-name">佰维存储</span></td><td><span class="tbl-code">688525</span></td><td><span class="tbl-sector">存储模组</span></td><td>企业级SSD国产替代核心，PCIe 5.0量产，长江存储生态</td><td style="color:#60a5fa;font-size:12px">+3.49% | 换手8.77% | 正常(1.0x)</td></tr>
+<tr><td><span class="tbl-name">江波龙</span></td><td><span class="tbl-code">301308</span></td><td><span class="tbl-sector">存储模组</span></td><td>存储模组国内第一，Lexar全球品牌，巴西工厂规避关税</td><td style="color:#60a5fa;font-size:12px">+2.50% | 换手6.66% | 正常(1.0x)</td></tr>
+<tr><td><span class="tbl-name">胜宏科技</span></td><td><span class="tbl-code">300476</span></td><td><span class="tbl-sector">PCB</span></td><td>AI服务器高多层板核心供应商，英伟达/AMD供应，越南工厂投产</td><td style="color:#60a5fa;font-size:12px">+1.25% | 换手6.19% | 正常(1.1x)</td></tr>
+<tr><td><span class="tbl-name">阳光电源</span></td><td><span class="tbl-code">300274</span></td><td><span class="tbl-sector">光伏逆变器</span></td><td>逆变器全球出货第一，储能系统全球前三，中东/欧洲大储订单爆发</td><td style="color:#60a5fa;font-size:12px">-1.10% | 换手4.05% | 正常(0.8x)</td></tr>
+</table></div></div>
+</div></div>
+<div class="footer">⚠️ 本站内容仅供参考，不构成投资建议。股市有风险，投资需谨慎。<br>数据来源：东方财富、同花顺、新浪财经、NVIDIA官方、Bloomberg等。数据更新至2026年6月3日。</div>
+<script>function sw(i){document.querySelectorAll(".sec").forEach((s,j)=>s.classList.toggle("on",j===i));document.querySelectorAll(".nav button").forEach((b,j)=>b.classList.toggle("on",j===i))}</script>
+</body></html>
